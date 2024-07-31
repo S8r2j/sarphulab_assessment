@@ -53,3 +53,58 @@ This FastAPI application provides a user management system with authentication a
 6. **You can now access the APIs at**
    ```
    http://127.0.0.1:8000
+   
+## Configuration
+The application uses pydantic_settings to manage configuration settings. Ensure you have all required environment variables set in your .env file.
+
+## Usage
+Run the application.
+
+Access the API documentation at /docs or /redoc.
+
+## API Endpoints
+
+### User Registration
+
+- **Endpoint:** `/api/v1/register-user`
+- **Method:** POST
+- **Description:** Register a new user.
+
+### User Login
+
+- **Endpoint:** `/api/v1/auth/login`
+- **Method:** POST
+- **Description:** Authenticate user and return access and refresh tokens.
+
+### Token Refresh
+
+- **Endpoint:** `/api/v1/auth/refresh-token`
+- **Method:** POST
+- **Description:** Refresh the access token using a valid refresh token.
+
+### Get User Profile
+
+- **Endpoint:** `/api/v1/me`
+- **Method:** GET
+- **Description:** Get the profile of the currently authenticated user.
+
+## Database Schema
+
+### `users` Table
+
+- **user_id:** Integer, Primary Key
+- **name:** String, Not Null
+- **email:** String, Unique, Not Null
+- **location:** String, Not Null
+- **about:** Text, Nullable
+- **password:** String, Not Null
+
+### `refreshaccesstokens` Table
+
+- **tokenid:** Integer, Primary Key
+- **tokens:** Text, Unique
+- **type:** String, Default "Bearer"
+- **user_id:** Integer, Foreign Key to `users.user_id`
+
+## Exception Handling
+The application handles request validation errors and provides appropriate responses. Custom exception handling is implemented for request validation errors to return detailed error messages.
