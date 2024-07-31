@@ -53,6 +53,7 @@ This FastAPI application provides a user management system with authentication a
 6. **You can now access the APIs at**
    ```
    http://127.0.0.1:8000
+7. **Make sure you have postgresql installed locally**
    
 ## Configuration
 The application uses pydantic_settings to manage configuration settings. Ensure you have all required environment variables set in your .env file.
